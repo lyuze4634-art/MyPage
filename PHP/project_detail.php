@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <?php
 require_once __DIR__ . '/db.php';
 
@@ -167,3 +168,4 @@ if (!$project) {
 
 </body>
 </html>
+<?php include 'footer.php'; ?>

@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <?php
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/db.php';
@@ -266,3 +267,4 @@ try {
 
 </body>
 </html>
+<?php include 'footer.php'; ?>
