@@ -196,7 +196,7 @@ try {
         <h1>后台总管理页</h1>
         <div class="action-group">
             <a href="project_add.php" class="btn btn-add">+ 新增项目</a>
-            <a href="project_insert.php" class="btn btn-profile">编辑个人资料</a>
+            <a href="profile_edit.php" class="btn btn-profile">编辑个人资料</a>
             <a href="logout.php" class="btn btn-logout">退出登录</a>
         </div>
     </div>
@@ -249,7 +249,7 @@ try {
                                 <div class="operation-group">
                                     <a href="project_detail.php?id=<?php echo (int)$row['id']; ?>" class="btn btn-view">查看</a>
                                     <a href="project_edit.php?id=<?php echo (int)$row['id']; ?>" class="btn btn-edit">编辑</a>
-                                    <a href="project_delete.php?id=<?php echo (int)$row['id']; ?>" class="btn btn-delete" onclick="return confirm('确定要删除这个项目吗？');">删除</a>
+                                    <a href="project_delete.php?id=<?php echo (int)$row['id']; ?>&delete_image=1" class="btn btn-delete" onclick="return confirm('确定要删除这个项目吗？');">删除</a>
                                 </div>
                             </td>
                         </tr>
