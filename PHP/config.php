@@ -7,7 +7,7 @@
 define('SITE_NAME', 'Personal Homepage');
 
 // 你的固定后台密码（后续增删改查时使用）
-define('ADMIN_PASSWORD', '请在这里改成你的固定密码');
+define('ADMIN_PASSWORD', '1145141919810');
 
 // 是否显示报错
 define('DEBUG_MODE', true);

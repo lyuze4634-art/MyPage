@@ -16,7 +16,7 @@ function is_logged_in()
  */
 function login($password)
 {
-    if ($password === 114514) {
+    if ($password === 1145141919810) {
         $_SESSION['admin_logged_in'] = true;
         $_SESSION['login_time'] = time();
         return true;
