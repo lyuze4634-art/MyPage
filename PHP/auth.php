@@ -16,7 +16,7 @@ function is_logged_in()
  */
 function login($password)
 {
-    if ($password === 1145141919810) {
+    if ($password === ADMIN_PASSWORD) {
         $_SESSION['admin_logged_in'] = true;
         $_SESSION['login_time'] = time();
         return true;
@@ -49,12 +49,12 @@ function logout()
 
 /**
  * 强制要求登录
- * 未登录就跳转到 login.php
+ * 未登录就跳转到 admin_login.php
  */
 function require_login()
 {
     if (!is_logged_in()) {
-        header('Location: login.php');
+        header('Location: admin_login.php');
         exit;
     }
 }
