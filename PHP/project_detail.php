@@ -18,12 +18,6 @@ if (!$project) {
     exit('未找到该项目');
 }
 ?>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($project['title']); ?> - 项目详情</title>
     <style>
         * {
             box-sizing: border-box;
@@ -95,6 +89,8 @@ if (!$project) {
             color: #555;
             white-space: pre-wrap;
             margin-bottom: 25px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
         }
 
         .btn-group {
@@ -149,7 +145,7 @@ if (!$project) {
         </div>
 
         <div class="description">
-            <?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?>
+            <p><?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?></p>
         </div>
 
         <div class="btn-group">
@@ -165,7 +161,4 @@ if (!$project) {
         </div>
     </div>
 </div>
-
-</body>
-</html>
 <?php include 'footer.php'; ?>

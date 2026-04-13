@@ -41,7 +41,7 @@
 
 <header>
     <div>
-        <strong>My Portfolio</strong>
+        <strong>My Little House</strong>
     </div>
 
     <nav>

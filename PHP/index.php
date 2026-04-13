@@ -47,7 +47,7 @@ $projects = $stmt->fetchAll();
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-            align-items: center;
+            align-items: flex-start;
             background: #fff;
             padding: 30px;
             border-radius: 16px;
@@ -81,6 +81,7 @@ $projects = $stmt->fetchAll();
         .profile-info {
             flex: 1;
             min-width: 280px;
+            
         }
 
         .profile-info h1 {
@@ -93,6 +94,7 @@ $projects = $stmt->fetchAll();
             color: #555;
             margin-bottom: 20px;
             white-space: pre-wrap;
+            
         }
 
         .github-link a {
@@ -158,6 +160,8 @@ $projects = $stmt->fetchAll();
             margin-bottom: 15px;
             min-height: 72px;
             white-space: pre-wrap;
+            word-break: break-all;
+            overflow-wrap: anywhere;
         }
 
         .project-content a {
@@ -201,9 +205,7 @@ $projects = $stmt->fetchAll();
                 <?php echo !empty($profile['name']) ? htmlspecialchars($profile['name']) : '未设置姓名'; ?>
             </h1>
 
-            <p>
-                <?php echo !empty($profile['bio']) ? htmlspecialchars($profile['bio']) : '暂无简介'; ?>
-            </p>
+            <p><?php echo !empty($profile['bio']) ? htmlspecialchars(trim($profile['bio'])) : '暂无简介'; ?></p>
 
             <div class="github-link">
                 <?php if (!empty($profile['github_url'])): ?>
@@ -239,9 +241,7 @@ $projects = $stmt->fetchAll();
                                 </a>
                             </h3>
                         
-                            <p>
-                                <?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?>
-                            </p>
+                            <p><?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?></p>
                         
                             <a href="project_detail.php?id=<?php echo $project['id']; ?>">
                                 查看详情

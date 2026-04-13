@@ -31,7 +31,7 @@ if (!$project) {
             font-family: Arial, sans-serif;
             background: #f6f7fb;
             margin: 0;
-            padding: 40px;
+            padding: 0px;
         }
 
         .container {

@@ -1,5 +1,5 @@
 <?php
-// footer.php
+
 ?>
 </div>
 
