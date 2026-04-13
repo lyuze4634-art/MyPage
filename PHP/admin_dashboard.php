@@ -195,8 +195,8 @@ try {
     <div class="top-bar">
         <h1>后台总管理页</h1>
         <div class="action-group">
-            <a href="project_create.php" class="btn btn-add">+ 新增项目</a>
-            <a href="profile_edit.php" class="btn btn-profile">编辑个人资料</a>
+            <a href="project_add.php" class="btn btn-add">+ 新增项目</a>
+            <a href="project_insert.php" class="btn btn-profile">编辑个人资料</a>
             <a href="logout.php" class="btn btn-logout">退出登录</a>
         </div>
     </div>
