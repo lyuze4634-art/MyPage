@@ -1,4 +1,3 @@
-<?php include 'header.php'; ?>
 <?php
 require_once __DIR__ . '/auth.php';
 
@@ -149,4 +148,3 @@ if ($error === '1') {
 
 </body>
 </html>
-<?php include 'footer.php'; ?>

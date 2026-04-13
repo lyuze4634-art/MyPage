@@ -49,5 +49,3 @@
         <a href="admin_login.php">Admin</a>
     </nav>
 </header>
-
-<div class="container"></div>
