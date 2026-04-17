@@ -12,7 +12,7 @@ define('ADMIN_PASSWORD', 'your_secure_password_here');
 // 是否显示报错
 define('DEBUG_MODE', true);
 
-// 时区
+// 时区，根据需要修改为你所在的时区
 date_default_timezone_set('Asia/Tokyo');
 
 // =========================
