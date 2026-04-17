@@ -6,8 +6,8 @@
 // =========================
 define('SITE_NAME', 'Personal Homepage');
 
-// 你的固定后台密码（后续增删改查时使用）
-define('ADMIN_PASSWORD', '1145141919810');
+// 你的固定后台密码（后续增删改查时使用），改成你自己的安全密码
+define('ADMIN_PASSWORD', 'your_secure_password_here');
 
 // 是否显示报错
 define('DEBUG_MODE', true);
@@ -16,12 +16,12 @@ define('DEBUG_MODE', true);
 date_default_timezone_set('Asia/Tokyo');
 
 // =========================
-// 数据库设置
+// 数据库设置，这里改成你自己的 MySQL
 // =========================
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'personal_homepage');
-define('DB_USER', 'root');
-define('DB_PASS', '');   // 这里改成你自己的 MySQL 密码
+define('DB_HOST', '');
+define('DB_NAME', '');
+define('DB_USER', '');
+define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // =========================
