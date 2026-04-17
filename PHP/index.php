@@ -12,6 +12,7 @@ $projects = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@ $projects = $stmt->fetchAll();
             margin: 0;
             padding: 0;
         }
+
         .project-title-link {
             color: #333;
             text-decoration: none;
@@ -30,6 +32,7 @@ $projects = $stmt->fetchAll();
         .project-title-link:hover {
             color: #007bff;
         }
+
         body {
             font-family: Arial, "Microsoft YaHei", sans-serif;
             background: #f5f7fb;
@@ -51,7 +54,7 @@ $projects = $stmt->fetchAll();
             background: #fff;
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
             margin-bottom: 40px;
         }
 
@@ -81,7 +84,7 @@ $projects = $stmt->fetchAll();
         .profile-info {
             flex: 1;
             min-width: 280px;
-            
+
         }
 
         .profile-info h1 {
@@ -94,7 +97,7 @@ $projects = $stmt->fetchAll();
             color: #555;
             margin-bottom: 20px;
             white-space: pre-wrap;
-            
+
         }
 
         .github-link a {
@@ -121,7 +124,7 @@ $projects = $stmt->fetchAll();
             background: #fff;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .project-image {
@@ -178,95 +181,311 @@ $projects = $stmt->fetchAll();
             padding: 25px;
             border-radius: 16px;
             color: #777;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .text-link {
             color: #007bff;
             word-break: break-all;
         }
+
+        .chat-section {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .chat-title {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+
+        .chat-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 18px;
+        }
+
+        .chat-box {
+            height: 360px;
+            overflow-y: auto;
+            background: #f7f9fc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 14px;
+        }
+
+        .chat-message.user {
+            justify-content: flex-start;
+        }
+
+        .chat-message.bot {
+            justify-content: flex-end;
+        }
+
+        .chat-bubble {
+            max-width: 75%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        .chat-message.user .chat-bubble {
+            background: #e8f0ff;
+            color: #222;
+            border-bottom-left-radius: 6px;
+        }
+
+        .chat-message.bot .chat-bubble {
+            background: #24292e;
+            color: #fff;
+            border-bottom-right-radius: 6px;
+        }
+
+        .chat-form {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .chat-form textarea {
+            flex: 1;
+            min-height: 90px;
+            resize: vertical;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .chat-form textarea:focus {
+            border-color: #007bff;
+        }
+
+        .chat-form button {
+            width: 120px;
+            border: none;
+            border-radius: 12px;
+            background: #24292e;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .chat-form button:hover {
+            opacity: 0.92;
+        }
+
+        .chat-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .chat-tips {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .chat-form {
+                flex-direction: column;
+            }
+
+            .chat-form button {
+                width: 100%;
+                height: 46px;
+            }
+
+            .chat-bubble {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <section class="profile-section">
-        <div class="avatar-box">
-            <?php if (!empty($profile) && !empty($profile['avatar'])): ?>
-                <img src="<?php echo htmlspecialchars($profile['avatar']); ?>" alt="头像">
-            <?php else: ?>
-                <div class="avatar-placeholder">暂无头像</div>
-            <?php endif; ?>
-        </div>
-
-        <div class="profile-info">
-            <h1>
-                <?php echo !empty($profile['name']) ? htmlspecialchars($profile['name']) : '未设置姓名'; ?>
-            </h1>
-
-            <p><?php echo !empty($profile['bio']) ? htmlspecialchars(trim($profile['bio'])) : '暂无简介'; ?></p>
-
-            <div class="github-link">
-                <?php if (!empty($profile['github_url'])): ?>
-                    <a href="<?php echo htmlspecialchars($profile['github_url']); ?>" target="_blank">
-                        查看 GitHub
-                    </a>
+        <section class="profile-section">
+            <div class="avatar-box">
+                <?php if (!empty($profile) && !empty($profile['avatar'])): ?>
+                    <img src="<?php echo htmlspecialchars($profile['avatar']); ?>" alt="头像">
                 <?php else: ?>
-                    <span>暂无 GitHub 链接</span>
+                    <div class="avatar-placeholder">暂无头像</div>
                 <?php endif; ?>
             </div>
-        </div>
-    </section>
 
-    <section>
-        <h2 class="section-title">我的项目</h2>
+            <div class="profile-info">
+                <h1>
+                    <?php echo !empty($profile['name']) ? htmlspecialchars($profile['name']) : '未设置姓名'; ?>
+                </h1>
 
-        <?php if (!empty($projects)): ?>
-            <div class="projects-grid">
-                <?php foreach ($projects as $project): ?>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <?php if (!empty($project['image'])): ?>
-                                <img src="<?php echo htmlspecialchars($project['image']); ?>" alt="项目图片">
-                            <?php else: ?>
-                                <div class="project-placeholder">暂无项目图片</div>
-                            <?php endif; ?>
-                        </div>
+                <p><?php echo !empty($profile['bio']) ? htmlspecialchars(trim($profile['bio'])) : '暂无简介'; ?></p>
 
-                        <div class="project-content">
-                            <h3>
-                                <a href="project_detail.php?id=<?php echo $project['id']; ?>" class="project-title-link">
-                                    <?php echo htmlspecialchars($project['title']); ?>
-                                </a>
-                            </h3>
-                        
-                            <p><?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?></p>
-                        
-                            <a href="project_detail.php?id=<?php echo $project['id']; ?>">
-                                查看详情
-                            </a>
-                        
-                            <?php if (!empty($project['project_url'])): ?>
-                                <a href="<?php echo htmlspecialchars($project['project_url']); ?>" target="_blank"
-                                    style="margin-left:10px; background:#24292e;">
-                                    项目链接
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                        
-                    </div>
-                <?php endforeach; ?>
+                <div class="github-link">
+                    <?php if (!empty($profile['github_url'])): ?>
+                        <a href="<?php echo htmlspecialchars($profile['github_url']); ?>" target="_blank">
+                            查看 GitHub
+                        </a>
+                    <?php else: ?>
+                        <span>暂无 GitHub 链接</span>
+                    <?php endif; ?>
+                </div>
             </div>
-        <?php else: ?>
-            <div class="empty-box">暂时还没有项目数据</div>
-        <?php endif; ?>
-    </section>
-
-</div>
+        </section>
 
 
+        <section class="chat-section">
+            <h2 class="chat-title">聊天助手</h2>
+            <p class="chat-subtitle">左边是你的问题，右边是机器人的回答。</p>
+
+            <div id="chatBox" class="chat-box">
+                <div class="chat-message bot">
+                    <div class="chat-bubble">你好，可以问我网站开发、PHP、数据库、服务器部署等相关问题。</div>
+                </div>
+            </div>
+
+            <form id="chatForm" class="chat-form">
+                <textarea id="messageInput" placeholder="请输入你的问题"></textarea>
+                <button type="submit" id="sendBtn">发送</button>
+            </form>
+
+            <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
+        </section>
+
+
+        <section>
+            <h2 class="section-title">我的项目</h2>
+
+            <?php if (!empty($projects)): ?>
+                <div class="projects-grid">
+                    <?php foreach ($projects as $project): ?>
+                        <div class="project-card">
+                            <div class="project-image">
+                                <?php if (!empty($project['image'])): ?>
+                                    <img src="<?php echo htmlspecialchars($project['image']); ?>" alt="项目图片">
+                                <?php else: ?>
+                                    <div class="project-placeholder">暂无项目图片</div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="project-content">
+                                <h3>
+                                    <a href="project_detail.php?id=<?php echo $project['id']; ?>" class="project-title-link">
+                                        <?php echo htmlspecialchars($project['title']); ?>
+                                    </a>
+                                </h3>
+
+                                <p><?php echo !empty($project['description']) ? htmlspecialchars($project['description']) : '暂无项目介绍'; ?></p>
+
+                                <a href="project_detail.php?id=<?php echo $project['id']; ?>">
+                                    查看详情
+                                </a>
+
+                                <?php if (!empty($project['project_url'])): ?>
+                                    <a href="<?php echo htmlspecialchars($project['project_url']); ?>" target="_blank"
+                                        style="margin-left:10px; background:#24292e;">
+                                        项目链接
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <div class="empty-box">暂时还没有项目数据</div>
+            <?php endif; ?>
+        </section>
+
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const messageInput = document.getElementById('messageInput');
+        const chatBox = document.getElementById('chatBox');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function addMessage(role, text) {
+            const message = document.createElement('div');
+            message.className = 'chat-message ' + role;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble';
+            bubble.innerHTML = escapeHtml(text);
+
+            message.appendChild(bubble);
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            return bubble;
+        }
+
+        if (chatForm) {
+            chatForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const message = messageInput.value.trim();
+                if (!message) return;
+
+                addMessage('user', message);
+                messageInput.value = '';
+                sendBtn.disabled = true;
+
+                const loadingBubble = addMessage('bot', '思考中...');
+
+                try {
+                    const response = await fetch('chat.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: message
+                        })
+                    });
+
+                    const data = await response.json();
+                    loadingBubble.innerHTML = escapeHtml(data.reply || '没有返回内容');
+                } catch (error) {
+                    loadingBubble.innerHTML = '请求失败，请检查 chat.php、config.php 或服务器环境。';
+                }
+
+                sendBtn.disabled = false;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+            messageInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    chatForm.dispatchEvent(new Event('submit'));
+                }
+            });
+        }
+    </script>
 
 </body>
+
 </html>
 <?php include 'footer.php'; ?>
