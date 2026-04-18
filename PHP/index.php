@@ -321,6 +321,7 @@ $projects = $stmt->fetchAll();
 
     <div class="container">
 
+<!-- 这里是名片card -->
         <section class="profile-section">
             <div class="avatar-box">
                 <?php if (!empty($profile) && !empty($profile['avatar'])): ?>
@@ -349,7 +350,7 @@ $projects = $stmt->fetchAll();
             </div>
         </section>
 
-
+<!-- 这里是AIcard和介绍card -->
         <section class="chat-section">
             <h2 class="chat-title">聊天助手</h2>
             <p class="chat-subtitle">左边是你的问题，右边是机器人的回答。</p>
@@ -368,7 +369,7 @@ $projects = $stmt->fetchAll();
             <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
         </section>
 
-
+<!-- 这里是项目card -->
         <section>
             <h2 class="section-title">我的项目</h2>
 
