@@ -300,6 +300,18 @@ $projects = $stmt->fetchAll();
             color: #777;
         }
 
+        .split-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .chat-left,
+        .chat-right {
+            min-width: 0;
+        }
+
         @media (max-width: 768px) {
             .chat-form {
                 flex-direction: column;
@@ -351,7 +363,9 @@ $projects = $stmt->fetchAll();
         </section>
 
         <!-- 这里是AIcard和介绍card -->
-        <section class="chat-section">
+        <section class="chat-section split-section">
+
+
             <!-- 左组件 -->
             <div class="chat-left">
                 <h2 class="chat-title">聊天助手</h2>
@@ -369,18 +383,22 @@ $projects = $stmt->fetchAll();
                 </form>
 
                 <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
-            <!-- 右组件 -->
-                <div class="chat-right">
-                    <h2 class="motivation-title">给自己的话</h2>
-                    <div class="motivation-box">
-                        <p>先完成，再完美。</p>
-                        <p>每天进步一点点，时间会给你答案。</p>
-                        <p>会写、会改、会部署，就是竞争力。</p>
-                        <p>不要怕慢，怕的是停下来。</p>
-                        <p>把想法做成作品，比空想更重要。</p>
-                    </div>
 
+            </div>
+
+            <!-- 右组件 -->
+            <div class="chat-right">
+                <h2 class="motivation-title">给自己的话</h2>
+                <div class="motivation-box">
+                    <p>先完成，再完美。</p>
+                    <p>每天进步一点点，时间会给你答案。</p>
+                    <p>会写、会改、会部署，就是竞争力。</p>
+                    <p>不要怕慢，怕的是停下来。</p>
+                    <p>把想法做成作品，比空想更重要。</p>
                 </div>
+
+            </div>
+
 
         </section>
 
