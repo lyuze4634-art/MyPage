@@ -321,7 +321,7 @@ $projects = $stmt->fetchAll();
 
     <div class="container">
 
-<!-- 这里是名片card -->
+        <!-- 这里是名片card -->
         <section class="profile-section">
             <div class="avatar-box">
                 <?php if (!empty($profile) && !empty($profile['avatar'])): ?>
@@ -350,26 +350,41 @@ $projects = $stmt->fetchAll();
             </div>
         </section>
 
-<!-- 这里是AIcard和介绍card -->
+        <!-- 这里是AIcard和介绍card -->
         <section class="chat-section">
-            <h2 class="chat-title">聊天助手</h2>
-            <p class="chat-subtitle">左边是你的问题，右边是机器人的回答。</p>
+            <!-- 左组件 -->
+            <div class="chat-left">
+                <h2 class="chat-title">聊天助手</h2>
+                <p class="chat-subtitle">左边是你的问题，右边是机器人的回答。</p>
 
-            <div id="chatBox" class="chat-box">
-                <div class="chat-message bot">
-                    <div class="chat-bubble">你好，可以问我网站开发、PHP、数据库、服务器部署等相关问题。</div>
+                <div id="chatBox" class="chat-box">
+                    <div class="chat-message bot">
+                        <div class="chat-bubble">你好，可以问我网站开发、PHP、数据库、服务器部署等相关问题。</div>
+                    </div>
                 </div>
-            </div>
 
-            <form id="chatForm" class="chat-form">
-                <textarea id="messageInput" placeholder="请输入你的问题"></textarea>
-                <button type="submit" id="sendBtn">发送</button>
-            </form>
+                <form id="chatForm" class="chat-form">
+                    <textarea id="messageInput" placeholder="请输入你的问题"></textarea>
+                    <button type="submit" id="sendBtn">发送</button>
+                </form>
 
-            <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
+                <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
+            <!-- 右组件 -->
+                <div class="chat-right">
+                    <h2 class="motivation-title">给自己的话</h2>
+                    <div class="motivation-box">
+                        <p>先完成，再完美。</p>
+                        <p>每天进步一点点，时间会给你答案。</p>
+                        <p>会写、会改、会部署，就是竞争力。</p>
+                        <p>不要怕慢，怕的是停下来。</p>
+                        <p>把想法做成作品，比空想更重要。</p>
+                    </div>
+
+                </div>
+
         </section>
 
-<!-- 这里是项目card -->
+        <!-- 这里是项目card -->
         <section>
             <h2 class="section-title">我的项目</h2>
 
