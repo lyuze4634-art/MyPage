@@ -24,6 +24,20 @@ $projects = $stmt->fetchAll();
             padding: 0;
         }
 
+
+
+        .motivation-gif {
+            width: 200px;
+            transition: transform 0.2s ease;
+        }
+        .motivation-gif:hover {
+            transform: scale(1.5);
+        }
+        .motivation-box{
+            text-align: center;
+        }
+        
+        
         .project-title-link {
             color: #333;
             text-decoration: none;
@@ -124,6 +138,8 @@ $projects = $stmt->fetchAll();
             background: #fff;
             border-radius: 16px;
             overflow: hidden;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
@@ -161,10 +177,14 @@ $projects = $stmt->fetchAll();
             font-size: 15px;
             color: #666;
             margin-bottom: 15px;
-            min-height: 72px;
-            white-space: pre-wrap;
-            word-break: break-all;
-            overflow-wrap: anywhere;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .project-content a {
@@ -209,7 +229,7 @@ $projects = $stmt->fetchAll();
         }
 
         .chat-box {
-            height: 360px;
+            height: 150px;
             overflow-y: auto;
             background: #f7f9fc;
             border-radius: 12px;
@@ -307,10 +327,21 @@ $projects = $stmt->fetchAll();
             align-items: stretch;
         }
 
-        .chat-left,
-        .chat-right {
+        .chat-left{
             min-width: 0;
         }
+        
+        
+        .chat-right {
+            min-width: 0;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+
+
+
 
         @media (max-width: 768px) {
             .chat-form {
@@ -333,7 +364,6 @@ $projects = $stmt->fetchAll();
 
     <div class="container">
 
-        <!-- 这里是名片card -->
         <section class="profile-section">
             <div class="avatar-box">
                 <?php if (!empty($profile) && !empty($profile['avatar'])): ?>
@@ -362,18 +392,18 @@ $projects = $stmt->fetchAll();
             </div>
         </section>
 
-        <!-- 这里是AIcard和介绍card -->
+
         <section class="chat-section split-section">
 
-
+        
             <!-- 左组件 -->
             <div class="chat-left">
                 <h2 class="chat-title">聊天助手</h2>
-                <p class="chat-subtitle">左边是你的问题，右边是机器人的回答。</p>
+                <p class="chat-subtitle">⬅You   Bot➡</p>
 
                 <div id="chatBox" class="chat-box">
                     <div class="chat-message bot">
-                        <div class="chat-bubble">你好，可以问我网站开发、PHP、数据库、服务器部署等相关问题。</div>
+                        <div class="chat-bubble">此Bot仅负责解释技术相关问题</div>
                     </div>
                 </div>
 
@@ -383,26 +413,25 @@ $projects = $stmt->fetchAll();
                 </form>
 
                 <div class="chat-tips">按 Enter 发送，Shift + Enter 换行。</div>
-
+                  
             </div>
 
-            <!-- 右组件 -->
+            <!-- 右组件 -->  
             <div class="chat-right">
-                <h2 class="motivation-title">给自己的话</h2>
-                <div class="motivation-box">
-                    <p>先完成，再完美。</p>
-                    <p>每天进步一点点，时间会给你答案。</p>
-                    <p>会写、会改、会部署，就是竞争力。</p>
-                    <p>不要怕慢，怕的是停下来。</p>
-                    <p>把想法做成作品，比空想更重要。</p>
-                </div>
+                    <h2 class="motivation-title">楽しく生きる</h2>
+                    <div class="motivation-box">
+                        <br>
+                        <p>touch Me</p>
+                        <img src="uploads/projects/demo.gif" alt="gif" class="motivation-gif" id="clickGif">
+                        <audio id="gifAudio" src="uploads/projects/oiiaoiia.mp3"></audio>
+                    </div>
 
             </div>
 
 
         </section>
 
-        <!-- 这里是项目card -->
+
         <section>
             <h2 class="section-title">我的项目</h2>
 
@@ -454,7 +483,21 @@ $projects = $stmt->fetchAll();
         const messageInput = document.getElementById('messageInput');
         const chatBox = document.getElementById('chatBox');
         const sendBtn = document.getElementById('sendBtn');
+        
+        
+        document.addEventListener("DOMContentLoaded", function () {
+        const gif = document.getElementById("clickGif");
+        const audio = document.getElementById("gifAudio");
 
+        gif.addEventListener("click", function () {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+    });
+        
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
