@@ -139,6 +139,7 @@ $projects = $stmt->fetchAll();
             border-radius: 16px;
             overflow: hidden;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
@@ -181,6 +182,7 @@ $projects = $stmt->fetchAll();
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             overflow: hidden;
             text-overflow: ellipsis;
             word-break: break-word;
